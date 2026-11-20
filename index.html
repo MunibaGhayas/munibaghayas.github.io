@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muniba Ghayas | WordPress Developer & BSCS Graduate</title>
+  <meta name="description" content="Portfolio of Muniba Ghayas — WordPress Developer & BSCS Graduate (University of Karachi – UBIT) specializing in custom WordPress builds, Elementor, WooCommerce, UI/UX, and SEO performance optimization." />
+
+  <!-- Open Graph / Social Sharing Metadata -->
+  <meta property="og:title" content="Muniba Ghayas — WordPress Developer & BSCS Graduate" />
+  <meta property="og:description" content="Building responsive, high-performing WordPress websites, WooCommerce storefronts, and SEO-optimized digital experiences." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts: Plus Jakarta Sans, Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN (Zero build step required for GitHub Pages) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Tailwind Design Tokens -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            void: '#090c0e',
+            panel: '#101518',
+            panelHover: '#161d22',
+            emeraldAccent: '#10b981',
+            tealAccent: '#14b8a6',
+            cyanAccent: '#22d3ee',
+          },
+          boxShadow: {
+            'emerald-glow': '0 0 30px -6px rgba(16, 185, 129, 0.35)',
+            'card-hover': '0 18px 40px -15px rgba(16, 185, 129, 0.2)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #090c0e;
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
+
+    /* Subtle architectural dot & grid background */
+    .bg-tech-grid {
+      background-size: 38px 38px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    }
+
+    /* Glassmorphism surface */
+    .glass-card {
+      background: rgba(16, 21, 24, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(16, 185, 129, 0.45);
+      box-shadow: 0 18px 40px -15px rgba(16, 185, 129, 0.22);
+    }
+
+    /* Gradient Text */
+    .text-gradient {
+      background: linear-gradient(135deg, #34d399 0%, #2dd4bf 50%, #22d3ee 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090c0e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #10b981;
+    }
+
+    /* Filter animation */
+    .project-card {
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .project-card.is-hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-emeraldAccent selection:text-void">
+
+  <!-- =====================================================================
+       STICKY NAVIGATION BAR
+  ====================================================================== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-[#090c0e]/85 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Brand Monogram -->
+        <a href="#" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/40 flex items-center justify-center group-hover:border-emeraldAccent transition-colors">
+            <span class="font-mono font-bold text-emeraldAccent text-base">MG</span>
+          </div>
+          <div>
+            <span class="font-display font-bold text-white tracking-tight text-base sm:text-lg block leading-none">
+              Muniba Ghayas<span class="text-emeraldAccent">.</span>
+            </span>
+            <span class="font-mono text-[11px] text-slate-400 tracking-wider uppercase mt-1 block">
+              WordPress &amp; Web Dev
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8" aria-label="Main Navigation">
+          <a href="#about" class="text-sm font-medium text-slate-300 hover:text-emeraldAccent transition-colors">About</a>
+          <a href="#projects" class="text-sm font-medium text-slate-300 hover:text-emeraldAccent transition-colors">Projects</a>
+          <a href="#experience" class="text-sm font-medium text-slate-300 hover:text-emeraldAccent transition-colors">Experience</a>
+          <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-emeraldAccent transition-colors">Toolkit</a>
+          <a href="#contact" class="text-sm font-medium text-slate-300 hover:text-emeraldAccent transition-colors">Contact</a>
+        </nav>
+
+        <!-- Desktop Action Button -->
+        <div class="hidden md:flex items-center gap-3">
+          <a href="https://www.linkedin.com/in/muniba-ghayas-269544248/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="p-2.5 rounded-xl bg-panel border border-slate-800 text-slate-300 hover:text-emeraldAccent hover:border-emerald-500/50 transition-colors">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="#contact" class="px-4 py-2.5 rounded-xl bg-emeraldAccent hover:bg-emerald-400 text-void text-sm font-semibold shadow-emerald-glow transition-all">
+            Let’s Connect
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" type="button" aria-label="Toggle Menu" aria-expanded="false" class="md:hidden p-2.5 rounded-xl bg-panel border border-slate-800 text-slate-300 hover:text-white focus:outline-none">
+          <svg id="icon-open" class="w-6 h-6 block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#0e1316] border-b border-slate-800 px-4 pt-2 pb-5 space-y-1.5">
+      <a href="#about" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-panel hover:text-emeraldAccent">About</a>
+      <a href="#projects" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-panel hover:text-emeraldAccent">Projects</a>
+      <a href="#experience" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-panel hover:text-emeraldAccent">Experience &amp; Education</a>
+      <a href="#skills" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-panel hover:text-emeraldAccent">Toolkit &amp; Interests</a>
+      <a href="#contact" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-panel hover:text-emeraldAccent">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- =====================================================================
+         HERO SECTION
+    ====================================================================== -->
+    <section id="about" class="relative pt-28 pb-20 sm:pt-36 sm:pb-28 bg-tech-grid border-b border-slate-800/70 overflow-hidden">
+      <!-- Ambient Radial Glows -->
+      <div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[540px] h-[340px] bg-emerald-500/15 rounded-full blur-[130px]"></div>
+      <div class="pointer-events-none absolute bottom-0 right-10 w-80 h-80 bg-cyan-500/10 rounded-full blur-[110px]"></div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl">
+          <!-- Status & Degree Badge -->
+          <div class="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-panel/90 border border-emerald-500/30 mb-6">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emeraldAccent opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emeraldAccent"></span>
+            </span>
+            <span class="text-xs font-mono text-emerald-300 tracking-wide">
+              WordPress Developer &bull; BSCS Graduate (University of Karachi – UBIT)
+            </span>
+          </div>
+
+          <!-- Main Headline -->
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12] mb-6">
+            Hi, I’m <span class="text-gradient">Muniba Ghayas</span>.<br />
+            <span class="text-slate-200 text-3xl sm:text-4xl lg:text-[42px] font-bold">
+              Crafting fast, conversion-ready WordPress &amp; web experiences.
+            </span>
+          </h1>
+
+          <!-- Bio Summary (Synced with LinkedIn & CV) -->
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed mb-8">
+            I’m a <strong class="text-white font-semibold">BSCS graduate from University of Karachi – UBIT</strong> and a <strong class="text-white font-semibold">WordPress Developer</strong> currently working with <span class="text-emerald-300 font-medium">NJ Marketing Group Inc.</span> and <span class="text-emerald-300 font-medium">NJSoftLab</span>. I build and customize responsive WordPress websites — from theme development and plugin integration to site speed, Core Web Vitals, and SEO performance to help businesses improve visibility and search rankings.
+          </p>
+
+          <!-- Primary CTA Buttons -->
+          <div class="flex flex-wrap items-center gap-3.5">
+            <a href="#projects" class="px-6 py-3.5 rounded-xl bg-emeraldAccent hover:bg-emerald-400 text-void font-semibold text-sm sm:text-base shadow-emerald-glow transition-all inline-flex items-center gap-2">
+              Explore Projects
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </a>
+            <a href="#contact" class="px-6 py-3.5 rounded-xl bg-panel hover:bg-panelHover border border-slate-700 hover:border-emerald-500/50 text-white font-semibold text-sm sm:text-base transition-all">
+              Let’s Connect
+            </a>
+            <a href="https://www.linkedin.com/in/muniba-ghayas-269544248/" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 rounded-xl bg-panel/60 hover:bg-panel border border-slate-800 hover:border-cyan-400/50 text-slate-200 hover:text-cyan-300 font-medium text-sm sm:text-base transition-all inline-flex items-center gap-2">
+              <svg class="w-4 h-4 fill-current text-cyan-400" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+              LinkedIn Profile
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SELECTED PROJECTS SHOWCASE (FILTERABLE)
+    ====================================================================== -->
+    <section id="projects" class="py-20 sm:py-28 border-b border-slate-800/70">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header + Filter Controls -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest text-emeraldAccent font-semibold">Portfolio Showcase</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-2">
+              Live Websites &amp; Client Builds
+            </h2>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-xl">
+              Production websites engineered across healthcare, SaaS, AI, Canadian local services, and custom WooCommerce retail.
+            </p>
+          </div>
+
+          <!-- Interactive Filter Buttons -->
+          <div class="inline-flex flex-wrap gap-2 p-1.5 rounded-2xl bg-panel border border-slate-800 self-start md:self-auto" role="tablist" aria-label="Filter projects by category">
+            <button type="button" data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-emeraldAccent text-void transition-all">
+              All Projects (8)
+            </button>
+            <button type="button" data-filter="agency" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-all">
+              Agency Builds (6)
+            </button>
+            <button type="button" data-filter="freelance" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-all">
+              Freelance (2)
+            </button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- 1. Montrose Pet Clinic -->
+          <article data-category="agency" class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                  Agency Build
+                </span>
+                <span class="text-xs font-mono text-slate-500">montrosepetclinic.ca</span>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">
+                Montrose Pet Clinic
+              </h3>
+              <p class="text-slate-300 text-sm leading-relaxed mb-5">
+                Veterinary &amp; pet care web platform designed for seamless appointment discovery, mobile responsiveness, and Canadian local search visibility.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">WordPress</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Elementor</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Local SEO</span>
+              </div>
+              <a href="https://montrosepetclinic.ca/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/80 hover:bg-emeraldAccent text-white hover:text-void font-semibold text-xs sm:text-sm transition-colors inline-flex items-center justify-center gap-2">
+                Visit Live Site
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 2. Crmexo -->
+          <article data-category="agency" class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                  Agency Build
+                </span>
+                <span class="text-xs font-mono text-slate-500">crmexo.com</span>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">
+                Crmexo
+              </h3>
+              <p class="text-slate-300 text-sm leading-relaxed mb-5">
+                Modern SaaS &amp; CRM product showcase website engineered with clean UI architecture, conversion-focused layouts, and fast page load performance.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Custom WordPress</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">SaaS UI</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Speed Optimization</span>
+              </div>
+              <a href="https://crmexo.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/80 hover:bg-emeraldAccent text-white hover:text-void font-semibold text-xs sm:text-sm transition-colors inline-flex items-center justify-center gap-2">
+                Visit Live Site
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 3. NJXUM -->
+          <article data-category="agency" class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                  Agency Build
+                </span>
+                <span class="text-xs font-mono text-slate-500">njxum.com</span>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">
+                NJXUM
+              </h3>
+              <p class="text-slate-300 text-sm leading-relaxed mb-5">
+                AI &amp; digital solutions platform combining sharp visual hierarchy, custom front-end styling, and optimized technical performance.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">WordPress</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Custom CSS/JS</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Core Web Vitals</span>
+              </div>
+              <a href="https://njxum.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/80 hover:bg-emeraldAccent text-white hover:text-void font-semibold text-xs sm:text-sm transition-colors inline-flex items-center justify-center gap-2">
+                Visit Live Site
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 4. Best Maid 4U -->
+          <article data-category="agency" class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                  Agency Build
+                </span>
+                <span class="text-xs font-mono text-slate-500">bestmaid4u.ca</span>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">
+                Best Maid 4U
+              </h3>
+              <p class="text-slate-300 text-sm leading-relaxed mb-5">
+                Canadian residential &amp; commercial cleaning service portal built around clear service breakdowns, lead generation flows, and local SEO.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">WordPress</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Lead Gen UX</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Local SEO</span>
+              </div>
+              <a href="https://bestmaid4u.ca/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/80 hover:bg-emeraldAccent text-white hover:text-void font-semibold text-xs sm:text-sm transition-colors inline-flex items-center justify-center gap-2">
+                Visit Live Site
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 5. EyeMaxx Eyewear -->
+          <article data-category="agency" class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                  Agency Build
+                </span>
+                <span class="text-xs font-mono text-slate-500">eyemaxxeyewear.com</span>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">
+                EyeMaxx Eyewear
+              </h3>
+              <p class="text-slate-300 text-sm leading-relaxed mb-5">
+                Optical &amp; eyewear brand showcase featuring clean product catalog presentation, responsive layouts, and intuitive browsing across devices.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">WordPress</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Catalog UX</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Responsive UI</span>
+              </div>
+              <a href="https://eyemaxxeyewear.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/80 hover:bg-emeraldAccent text-white hover:text-void font-semibold text-xs sm:text-sm transition-colors inline-flex items-center justify-center gap-2">
+                Visit Live Site
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 6. Ramaya Cleaning Services -->
+          <article data-category="agency" class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                  Agency Build
+                </span>
+                <span class="text-xs font-mono text-slate-500">ramayacleaningservices.com</span>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">
+                Ramaya Cleaning Services
+              </h3>
+              <p class="text-slate-300 text-sm leading-relaxed mb-5">
+                Service booking &amp; business website engineered with Elementor, structured on-page SEO metadata, and fast mobile navigation.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">WordPress</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Elementor</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">On-Page SEO</span>
+              </div>
+              <a href="https://ramayacleaningservices.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/80 hover:bg-emeraldAccent text-white hover:text-void font-semibold text-xs sm:text-sm transition-colors inline-flex items-center justify-center gap-2">
+                Visit Live Site
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 7. LeatherCurt (Freelance) -->
+          <article data-category="freelance" class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between border-cyan-500/20">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+                  Freelance Project
+                </span>
+                <span class="text-xs font-mono text-slate-500">leathercurt.com</span>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">
+                LeatherCurt
+              </h3>
+              <p class="text-slate-300 text-sm leading-relaxed mb-5">
+                End-to-end WooCommerce storefront for handcrafted leather goods featuring customized product layouts, streamlined cart/checkout UX, and mobile optimization.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-cyan-200 font-mono text-[11px]">WooCommerce</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">E-Commerce UX</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Custom Layouts</span>
+              </div>
+              <a href="https://www.leathercurt.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/80 hover:bg-cyanAccent text-white hover:text-void font-semibold text-xs sm:text-sm transition-colors inline-flex items-center justify-center gap-2">
+                Visit Live Store
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 8. Shizuku Slow Brew (Freelance) -->
+          <article data-category="freelance" class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between border-cyan-500/20">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+                  Freelance Project
+                </span>
+                <span class="text-xs font-mono text-slate-500">shizukuslowbrew.com</span>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">
+                Shizuku Slow Brew
+              </h3>
+              <p class="text-slate-300 text-sm leading-relaxed mb-5">
+                Specialty coffee &amp; craft brew brand website blending refined typography, editorial storytelling, and responsive product showcase design.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-cyan-200 font-mono text-[11px]">WordPress</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Typography UI</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-[11px]">Brand Experience</span>
+              </div>
+              <a href="https://shizukuslowbrew.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl bg-slate-800/80 hover:bg-cyanAccent text-white hover:text-void font-semibold text-xs sm:text-sm transition-colors inline-flex items-center justify-center gap-2">
+                Visit Live Site
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         EXPERIENCE & EDUCATION TIMELINE
+    ====================================================================== -->
+    <section id="experience" class="py-20 sm:py-28 bg-panel/30 border-b border-slate-800/70">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          
+          <!-- Work Experience Column -->
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest text-emeraldAccent font-semibold">Career Track</span>
+            <h2 class="font-display text-3xl font-extrabold text-white mt-2 mb-8">
+              Work Experience
+            </h2>
+
+            <div class="relative pl-6 border-l-2 border-emerald-500/40 space-y-8">
+              <div class="relative glass-card rounded-2xl p-6">
+                <!-- Timeline Dot -->
+                <span class="absolute -left-[33px] top-7 w-4 h-4 rounded-full bg-emeraldAccent ring-4 ring-[#090c0e]"></span>
+                
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="font-mono text-xs px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 font-semibold">
+                    2024 – Present
+                  </span>
+                  <span class="text-xs font-mono text-slate-400">Full-Time Role</span>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white">
+                  WordPress Developer
+                </h3>
+                <p class="text-emerald-400 font-medium text-sm mt-0.5 mb-4">
+                  NJ Marketing Group Inc. &amp; NJSoftLab
+                </p>
+                <ul class="space-y-2.5 text-sm text-slate-300 leading-relaxed">
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-emeraldAccent mt-1">&bull;</span>
+                    <span>Developing, customizing, and maintaining responsive WordPress websites using Elementor, custom themes, and tailored plugin integrations.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-emeraldAccent mt-1">&bull;</span>
+                    <span>Optimizing Core Web Vitals, site speed, image delivery, and technical on-page SEO to improve client search rankings and conversion rates.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-emeraldAccent mt-1">&bull;</span>
+                    <span>Delivered production platforms across Canadian and international brands including healthcare, SaaS, AI, eyewear, and commercial services.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education Column -->
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest text-cyanAccent font-semibold">Academic Foundation</span>
+            <h2 class="font-display text-3xl font-extrabold text-white mt-2 mb-8">
+              Education
+            </h2>
+
+            <div class="relative pl-6 border-l-2 border-cyan-500/40 space-y-6">
+              <!-- BSCS -->
+              <div class="relative glass-card rounded-2xl p-6">
+                <span class="absolute -left-[33px] top-7 w-4 h-4 rounded-full bg-cyanAccent ring-4 ring-[#090c0e]"></span>
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="font-mono text-xs px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-300 font-semibold">
+                    2021 – 2025
+                  </span>
+                  <span class="text-xs font-mono text-slate-400">BSCS Graduate</span>
+                </div>
+                <h3 class="font-display text-lg sm:text-xl font-bold text-white">
+                  Bachelor of Science in Computer Science (BSCS)
+                </h3>
+                <p class="text-cyan-300 font-medium text-sm mt-1">
+                  University of Karachi – UBIT (Umaer Basha Institute of Information Technology)
+                </p>
+              </div>
+
+              <!-- Intermediate -->
+              <div class="relative glass-card rounded-2xl p-6">
+                <span class="absolute -left-[33px] top-7 w-4 h-4 rounded-full bg-slate-600 ring-4 ring-[#090c0e]"></span>
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span class="font-mono text-xs px-3 py-1 rounded-full bg-slate-800 text-slate-300 font-semibold">
+                    2018 – 2020
+                  </span>
+                  <span class="text-xs font-mono text-slate-400">Intermediate</span>
+                </div>
+                <h3 class="font-display text-lg font-bold text-white">
+                  Higher Secondary Certificate — Pre-Engineering
+                </h3>
+                <p class="text-slate-300 font-medium text-sm mt-1">
+                  Shaheed-e-Millat College
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TECHNICAL TOOLKIT & CREATIVE INTERESTS
+    ====================================================================== -->
+    <section id="skills" class="py-20 sm:py-28 border-b border-slate-800/70">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="font-mono text-xs uppercase tracking-widest text-emeraldAccent font-semibold">Capabilities</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-2">
+            Technical Toolkit &amp; Creative Focus
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">
+            Combining computer science fundamentals with modern CMS engineering, clean typography, and user-centered design thinking.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Card 1: CMS & E-Commerce -->
+          <div class="glass-card rounded-2xl p-6 sm:p-7">
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emeraldAccent mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+            </div>
+            <h3 class="font-display text-lg font-bold text-white mb-3">WordPress &amp; E-Commerce</h3>
+            <p class="text-slate-400 text-sm mb-5 leading-relaxed">
+              Custom theme configuration, visual page building, and scalable online store setups tailored for business growth.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-emerald-300 font-mono text-xs">WordPress</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-emerald-300 font-mono text-xs">Elementor</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-emerald-300 font-mono text-xs">WooCommerce</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-xs">Plugin Integration</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Frontend, Code & Performance -->
+          <div class="glass-card rounded-2xl p-6 sm:p-7">
+            <div class="w-11 h-11 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyanAccent mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <h3 class="font-display text-lg font-bold text-white mb-3">Web Stack &amp; SEO Optimization</h3>
+            <p class="text-slate-400 text-sm mb-5 leading-relaxed">
+              Clean semantic markup, custom styling, scripting, and technical SEO strategies that boost speed and search rankings.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-cyan-300 font-mono text-xs">HTML5 &amp; CSS3</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-cyan-300 font-mono text-xs">JavaScript</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-cyan-300 font-mono text-xs">PHP</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-xs">Technical &amp; On-Page SEO</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-xs">Site Speed Optimization</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Design Thinking & Interests -->
+          <div class="glass-card rounded-2xl p-6 sm:p-7">
+            <div class="w-11 h-11 rounded-xl bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-tealAccent mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+            </div>
+            <h3 class="font-display text-lg font-bold text-white mb-3">Design Thinking &amp; Interests</h3>
+            <p class="text-slate-400 text-sm mb-5 leading-relaxed">
+              Human-centered problem solving inspired by clean typography, natural balance, and sharing knowledge with fellow builders.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-teal-300 font-mono text-xs">Design Thinking</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-teal-300 font-mono text-xs">UI/UX Design</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-xs">Typography</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-xs">Nature</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-slate-300 font-mono text-xs">Mentoring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CONTACT SECTION
+    ====================================================================== -->
+    <section id="contact" class="py-20 sm:py-28 relative overflow-hidden">
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-emerald-500/[0.04] to-transparent"></div>
+      
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="glass-card rounded-3xl p-8 sm:p-12 text-center border-emerald-500/25">
+          <span class="font-mono text-xs uppercase tracking-widest text-emeraldAccent font-semibold">Get In Touch</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4">
+            Ready to launch or optimize your WordPress site?
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+            Whether you need a custom business website, an Elementor redesign, a WooCommerce storefront, or Core Web Vitals &amp; SEO improvements — feel free to reach out directly.
+          </p>
+
+          <!-- Action Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+            <!-- Direct WhatsApp -->
+            <a href="https://wa.me/923302393641" target="_blank" rel="noopener noreferrer" class="p-4 rounded-2xl bg-emeraldAccent hover:bg-emerald-400 text-void font-semibold transition-all flex flex-col items-center justify-center gap-1.5 shadow-emerald-glow">
+              <span class="text-sm font-bold">Chat on WhatsApp</span>
+              <span class="font-mono text-xs opacity-90">+92 330 2393641</span>
+            </a>
+
+            <!-- Copy Phone Number -->
+            <button id="copy-phone-btn" type="button" class="p-4 rounded-2xl bg-panel hover:bg-panelHover border border-slate-700 hover:border-emerald-500/50 text-white transition-all flex flex-col items-center justify-center gap-1.5">
+              <span id="copy-phone-label" class="text-sm font-semibold">Copy Phone Number</span>
+              <span class="font-mono text-xs text-slate-400">+92 330 2393641</span>
+            </button>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/muniba-ghayas-269544248/" target="_blank" rel="noopener noreferrer" class="p-4 rounded-2xl bg-panel hover:bg-panelHover border border-slate-700 hover:border-cyan-400/50 text-white transition-all flex flex-col items-center justify-center gap-1.5">
+              <span class="text-sm font-semibold text-cyan-300">Connect on LinkedIn</span>
+              <span class="font-mono text-xs text-slate-400">/in/muniba-ghayas</span>
+            </a>
+          </div>
+
+          <!-- Toast Feedback Message -->
+          <p id="copy-toast" role="status" aria-live="polite" class="mt-4 text-xs font-mono text-emeraldAccent opacity-0 transition-opacity duration-200">
+            Phone number copied to clipboard!
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+  ====================================================================== -->
+  <footer class="border-t border-slate-800/80 py-8 bg-[#07090b]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-400">
+      <p>
+        &copy; <span id="current-year"></span> <strong class="text-white font-semibold">Muniba Ghayas</strong>. All rights reserved.
+      </p>
+      <p class="font-mono text-xs text-slate-500">
+        WordPress Developer &bull; BSCS Graduate (UBIT)
+      </p>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       VANILLA JAVASCRIPT (Menu, Filter Tabs, Clipboard)
+  ====================================================================== -->
+  <script>
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    menuBtn.addEventListener('click', () => {
+      const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!isExpanded));
+      mobileMenu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    // Close mobile drawer when clicking any link
+    document.querySelectorAll('.mobile-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Project Category Filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const selected = btn.getAttribute('data-filter');
+
+        // Update active button styling
+        filterButtons.forEach((b) => {
+          b.classList.remove('bg-emeraldAccent', 'text-void', 'font-semibold');
+          b.classList.add('text-slate-300', 'font-medium');
+        });
+        btn.classList.add('bg-emeraldAccent', 'text-void', 'font-semibold');
+        btn.classList.remove('text-slate-300', 'font-medium');
+
+        // Show/hide cards
+        projectCards.forEach((card) => {
+          const category = card.getAttribute('data-category');
+          if (selected === 'all' || category === selected) {
+            card.classList.remove('is-hidden');
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+      });
+    });
+
+    // Copy Phone Number using document.execCommand('copy') for universal iframe/browser support
+    const copyBtn = document.getElementById('copy-phone-btn');
+    const copyLabel = document.getElementById('copy-phone-label');
+    const copyToast = document.getElementById('copy-toast');
+
+    copyBtn.addEventListener('click', () => {
+      const phoneText = '+923302393641';
+      const tempInput = document.createElement('textarea');
+      tempInput.value = phoneText;
+      tempInput.style.position = 'fixed';
+      tempInput.style.opacity = '0';
+      document.body.appendChild(tempInput);
+      tempInput.select();
+
+      try {
+        document.execCommand('copy');
+        copyLabel.textContent = 'Copied!';
+        copyToast.classList.remove('opacity-0');
+        setTimeout(() => {
+          copyLabel.textContent = 'Copy Phone Number';
+          copyToast.classList.add('opacity-0');
+        }, 2500);
+      } catch (err) {
+        copyLabel.textContent = '+92 330 2393641';
+      } finally {
+        document.body.removeChild(tempInput);
+      }
+    });
+  </script>
+</body>
+</html>
